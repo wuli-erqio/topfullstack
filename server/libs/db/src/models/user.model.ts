@@ -1,4 +1,4 @@
-import { prop, modelOptions, DocumentType } from '@typegoose/typegoose'
+import { prop, modelOptions, DocumentType, arrayProp, Ref } from '@typegoose/typegoose'
 import { ApiProperty } from '@nestjs/swagger'
 import { hashSync } from 'bcryptjs'
 
@@ -25,5 +25,5 @@ export class User {
       return val ? hashSync(val) : val
     }
   })
-  password: string
+  password: string;
 }
