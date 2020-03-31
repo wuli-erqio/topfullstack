@@ -31,14 +31,17 @@
             <v-list-item-title v-text="item.text" />
           </v-list-item>
         </v-list>
-        <v-list-item class="mt-4" link>
+
+
+        <v-list-item class="mt-4" link @click="loginckick">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
           <v-list-item-title class="grey--text text--darken-1"
-            >登录</v-list-item-title
+            >{{$store.state.auth.user.username}}</v-list-item-title
           >
         </v-list-item>
+
         <v-list-item link>
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-settings</v-icon>
@@ -48,6 +51,7 @@
           >
         </v-list-item>
       </v-list>
+
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left color="red" dense>
@@ -101,7 +105,7 @@ export default {
     source: String
   },
   data: () => ({
-    isShowLoginForm: true,
+    isShowLoginForm: false,
     loginModel: {},
     drawer: null,
     items: [
@@ -126,6 +130,9 @@ export default {
         data: this.loginModel
       })
       this.isShowLoginForm = false
+    },
+    loginckick() {
+      this.isShowLoginForm = true
     }
   }
 }
